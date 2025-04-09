@@ -9,11 +9,11 @@ using MyCompany.Infrastructure.DbContexts;
 
 #nullable disable
 
-namespace MyCompany.Infrastructure.Migrations
+namespace MyCompany.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250409160332_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250409162902_initialDb")]
+    partial class initialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

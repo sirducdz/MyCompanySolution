@@ -8,7 +8,7 @@ using MyCompany.Infrastructure.DbContexts;
 
 #nullable disable
 
-namespace MyCompany.Infrastructure.Migrations
+namespace MyCompany.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
