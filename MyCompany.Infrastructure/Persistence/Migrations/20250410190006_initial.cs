@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyCompany.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class initialDb : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -89,17 +89,15 @@ namespace MyCompany.Infrastructure.Persistence.Migrations
                 name: "Salaries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SalaryAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    SalaryAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Salaries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Salaries_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_Salaries_Employees_Id",
+                        column: x => x.Id,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -125,12 +123,6 @@ namespace MyCompany.Infrastructure.Persistence.Migrations
                 name: "IX_ProjectEmployees_EmployeeId",
                 table: "ProjectEmployees",
                 column: "EmployeeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Salaries_EmployeeId",
-                table: "Salaries",
-                column: "EmployeeId",
-                unique: true);
         }
 
         /// <inheritdoc />

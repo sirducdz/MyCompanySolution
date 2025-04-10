@@ -11,7 +11,6 @@ namespace MyCompany.Domain.Entities
     {
         public int Id { get; set; }
         public decimal SalaryAmount { get; set; }
-        public int EmployeeId { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

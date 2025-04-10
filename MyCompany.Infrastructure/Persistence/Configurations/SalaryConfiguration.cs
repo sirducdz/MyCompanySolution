@@ -22,7 +22,7 @@ namespace MyCompany.Infrastructure.Persistence.Configurations
             // Configure One-to-One with Employee
             builder.HasOne(s => s.Employee)
                    .WithOne(e => e.Salary)
-                   .HasForeignKey<Salary>(s => s.EmployeeId) // Foreign key is here
+                   .HasForeignKey<Salary>(s => s.Id) // Foreign key is here
                    .IsRequired(); // Salary must belong to an Employee
         }
     }

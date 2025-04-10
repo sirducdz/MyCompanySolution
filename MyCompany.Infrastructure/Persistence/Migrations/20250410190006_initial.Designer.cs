@@ -12,8 +12,8 @@ using MyCompany.Infrastructure.DbContexts;
 namespace MyCompany.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250409162902_initialDb")]
-    partial class initialDb
+    [Migration("20250410190006_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,21 +130,12 @@ namespace MyCompany.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("MyCompany.Domain.Entities.Salary", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("SalaryAmount")
                         .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
 
                     b.ToTable("Salaries");
                 });
@@ -183,7 +174,7 @@ namespace MyCompany.Infrastructure.Persistence.Migrations
                 {
                     b.HasOne("MyCompany.Domain.Entities.Employee", "Employee")
                         .WithOne("Salary")
-                        .HasForeignKey("MyCompany.Domain.Entities.Salary", "EmployeeId")
+                        .HasForeignKey("MyCompany.Domain.Entities.Salary", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
